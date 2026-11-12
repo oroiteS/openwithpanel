@@ -115,8 +115,9 @@ jobs:
             exit 1
           fi
 
-      # 建成草稿：维护者在网页上看过才发布，出错的包不会直接到用户手里
-      - name: Create draft release
+      # 构建成功即直接发布（和 todolite 一致）：tag 推上去后不需要人工点发布。
+      # 代价是包有问题也会立刻对用户可见，tap 的 sync.sh 半小时内就会跟到这一版
+      - name: Create release
         env:
           GH_TOKEN: ${{ github.token }}
           SIGNED: ${{ steps.signing.outputs.signed }}
@@ -126,4 +127,4 @@ jobs:
             notes=$(cat "packaging/First Launch.txt")
           fi
           gh release create "$TAG" ".build/dist/OpenWithPanel-${TAG#v}.dmg" .build/dist/openwithpanel.rb \
-            --draft --title "OpenWithPanel ${TAG#v}" --notes "$notes" --generate-notes
+            --title "OpenWithPanel ${TAG#v}" --notes "$notes" --generate-notes
