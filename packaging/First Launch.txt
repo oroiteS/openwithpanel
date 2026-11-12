@@ -14,7 +14,7 @@ the first time you open it. To allow it once:
    click "Open Anyway" again.
 
 After this, OpenWithPanel opens normally every time.
-Source code and help: https://github.com/zhaojiannet/openwithpanel
+Source code and help: https://github.com/oroiteS/openwithpanel
 
 
 首次打开 OpenWithPanel
@@ -32,7 +32,7 @@ Source code and help: https://github.com/zhaojiannet/openwithpanel
 3. 输入登录密码或用触控ID确认，在接着出现的提示里再点一次「仍要打开」。
 
 之后每次都能正常打开。
-源代码和帮助：https://github.com/zhaojiannet/openwithpanel
+源代码和帮助：https://github.com/oroiteS/openwithpanel
 
 
 首次打開 OpenWithPanel
@@ -51,7 +51,7 @@ Source code and help: https://github.com/zhaojiannet/openwithpanel
    在接著出現的對話框裡再按一次「強制打開」。
 
 之後每次都能正常打開。
-原始碼與說明：https://github.com/zhaojiannet/openwithpanel
+原始碼與說明：https://github.com/oroiteS/openwithpanel
 
 
 OpenWithPanel を初めて開くとき
@@ -72,7 +72,7 @@ macOS がブロックします。一度だけ許可するには：
    表示されるダイアログで、もう一度「このまま開く」をクリックします。
 
 以降は毎回通常どおり開けます。
-ソースコードとヘルプ：https://github.com/zhaojiannet/openwithpanel
+ソースコードとヘルプ：https://github.com/oroiteS/openwithpanel
 
 
 OpenWithPanel 처음 열기
@@ -91,7 +91,7 @@ macOS가 차단합니다. 한 번만 허용하려면:
    대화상자에서 '그래도 열기'를 다시 클릭합니다.
 
 이후에는 OpenWithPanel이 매번 정상적으로 열립니다.
-소스 코드 및 도움말: https://github.com/zhaojiannet/openwithpanel
+소스 코드 및 도움말: https://github.com/oroiteS/openwithpanel
 
 
 OpenWithPanel zum ersten Mal öffnen
@@ -112,7 +112,7 @@ blockiert macOS sie beim ersten Öffnen. So erlaubst du sie einmalig:
    folgenden Dialog erneut auf „Dennoch öffnen“.
 
 Danach öffnet sich OpenWithPanel jedes Mal ganz normal.
-Quellcode und Hilfe: https://github.com/zhaojiannet/openwithpanel
+Quellcode und Hilfe: https://github.com/oroiteS/openwithpanel
 
 
 Ouvrir OpenWithPanel pour la première fois
@@ -133,7 +133,7 @@ bloque la première fois que vous l’ouvrez. Pour l’autoriser une fois :
    la fenêtre qui suit, cliquez à nouveau sur « Ouvrir quand même ».
 
 Ensuite, OpenWithPanel s’ouvre normalement à chaque fois.
-Code source et aide : https://github.com/zhaojiannet/openwithpanel
+Code source et aide : https://github.com/oroiteS/openwithpanel
 
 
 Abrir OpenWithPanel por primera vez
@@ -155,7 +155,7 @@ la bloquea la primera vez que la abres. Para permitirla una vez:
    "Abrir igualmente".
 
 A partir de entonces, OpenWithPanel se abrirá con normalidad.
-Código fuente y ayuda: https://github.com/zhaojiannet/openwithpanel
+Código fuente y ayuda: https://github.com/oroiteS/openwithpanel
 
 
 Abrir o OpenWithPanel pela primeira vez
@@ -176,7 +176,7 @@ a bloqueia na primeira vez que você a abre. Para permitir uma vez:
    diálogo seguinte, clique em "Abrir Mesmo Assim" novamente.
 
 Depois disso, o OpenWithPanel abre normalmente todas as vezes.
-Código-fonte e ajuda: https://github.com/zhaojiannet/openwithpanel
+Código-fonte e ajuda: https://github.com/oroiteS/openwithpanel
 
 
 Membuka OpenWithPanel untuk pertama kali
@@ -198,7 +198,7 @@ sekali:
    berikutnya, klik "Tetap Buka" lagi.
 
 Setelah ini, OpenWithPanel selalu terbuka seperti biasa.
-Kode sumber dan bantuan: https://github.com/zhaojiannet/openwithpanel
+Kode sumber dan bantuan: https://github.com/oroiteS/openwithpanel
 
 
 เปิด OpenWithPanel เป็นครั้งแรก
@@ -217,7 +217,7 @@ OpenWithPanel ชุดนี้ไม่ได้รับการรับร
    ในหน้าต่างที่แสดงขึ้นถัดมา ให้คลิก "ยืนยันจะเปิด" อีกครั้ง
 
 หลังจากนี้ OpenWithPanel จะเปิดได้ตามปกติทุกครั้ง
-ซอร์สโค้ดและความช่วยเหลือ: https://github.com/zhaojiannet/openwithpanel
+ซอร์สโค้ดและความช่วยเหลือ: https://github.com/oroiteS/openwithpanel
 
 
 Mở OpenWithPanel lần đầu
@@ -236,7 +236,7 @@ dụng trong lần mở đầu tiên. Để cho phép một lần:
    theo, bấm "Vẫn mở" lần nữa.
 
 Sau đó, OpenWithPanel sẽ mở bình thường mỗi lần.
-Mã nguồn và trợ giúp: https://github.com/zhaojiannet/openwithpanel
+Mã nguồn và trợ giúp: https://github.com/oroiteS/openwithpanel
 
 
 فتح OpenWithPanel لأول مرة
@@ -255,7 +255,7 @@ Mã nguồn và trợ giúp: https://github.com/zhaojiannet/openwithpanel
    التالي، انقر على "فتح على أية حال" مرة أخرى.
 
 بعد ذلك، يُفتح OpenWithPanel بشكل طبيعي في كل مرة.
-الشيفرة المصدرية والمساعدة: https://github.com/zhaojiannet/openwithpanel
+الشيفرة المصدرية والمساعدة: https://github.com/oroiteS/openwithpanel
 
 
 Первый запуск OpenWithPanel
@@ -276,7 +276,7 @@ Mã nguồn và trợ giúp: https://github.com/zhaojiannet/openwithpanel
    окне снова нажмите «Все равно открыть».
 
 После этого OpenWithPanel будет каждый раз открываться как обычно.
-Исходный код и справка: https://github.com/zhaojiannet/openwithpanel
+Исходный код и справка: https://github.com/oroiteS/openwithpanel
 
 
 OpenWithPanel को पहली बार खोलना
@@ -296,4 +296,4 @@ OpenWithPanel की यह कॉपी Apple द्वारा नोटर�
    आने वाले डायलॉग में फिर से "फिर भी खोलें" पर क्लिक करें।
 
 इसके बाद OpenWithPanel हर बार सामान्य रूप से खुलेगा।
-सोर्स कोड और सहायता: https://github.com/zhaojiannet/openwithpanel
+सोर्स कोड और सहायता: https://github.com/oroiteS/openwithpanel
