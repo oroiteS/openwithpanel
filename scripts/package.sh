@@ -4,6 +4,8 @@
 #                  用户第一次打开会被系统拦截，DMG 里附上放行步骤
 #   NOTARY_PROFILE `xcrun notarytool store-credentials` 存下的凭据名；设了才公证并 staple
 #   NOTARY_KEYCHAIN 凭据所在的钥匙串路径；不设时用默认钥匙串，CI 里凭据存在临时钥匙串时才需要
+#   VERSION        版本号（如 0.1.2）；不设时读工程的 MARKETING_VERSION。CI 由 tag 去掉 v 传入，
+#                  同时覆盖给 xcodebuild，所以包名、Info.plist 版本号和 tag 天然一致，不必先改工程
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -17,13 +19,15 @@ if [[ -n ${NOTARY_PROFILE:-} && $identity == - ]]; then
   exit 1
 fi
 
-version=$(xcodebuild -project OpenWithPanel.xcodeproj -scheme OpenWithPanel -configuration Release \
-  -showBuildSettings 2>/dev/null | awk '$1 == "MARKETING_VERSION" { print $3; exit }')
+version=${VERSION:-$(xcodebuild -project OpenWithPanel.xcodeproj -scheme OpenWithPanel -configuration Release \
+  -showBuildSettings 2>/dev/null | awk '$1 == "MARKETING_VERSION" { print $3; exit }')}
 app=$build/Build/Products/Release/OpenWithPanel.app
 dmg=$dist/OpenWithPanel-$version.dmg
 
+# MARKETING_VERSION 覆盖只对本次构建生效（Info.plist 由 GENERATE_INFOPLIST_FILE 从它生成），
+# 工程文件里的版本号不动
 xcodebuild -project OpenWithPanel.xcodeproj -scheme OpenWithPanel -configuration Release \
-  -derivedDataPath "$build" build | grep -E "error:|warning:|BUILD" || true
+  -derivedDataPath "$build" MARKETING_VERSION="$version" build | grep -E "error:|warning:|BUILD" || true
 [[ -d $app ]] || { echo "build failed: $app not found" >&2; exit 1; }
 
 # 由内向外签：先签内嵌的辅助程序，再签主 App。Developer ID 签名要带安全时间戳才能公证

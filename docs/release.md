@@ -32,18 +32,17 @@ If only some of the secrets are configured, the workflow stops before building, 
 
 ## Publishing a release
 
-1. Make sure `MARKETING_VERSION` in the Xcode project is the version you're releasing. The workflow fails if it doesn't match the tag.
-2. Create and push a tag, for example `git tag v0.1.0 && git push origin v0.1.0`. You can also run the workflow manually from **Actions › Release › Run workflow** and enter the tag name.
-3. When the workflow finishes, find the draft on the **Releases** page, check the notes and assets, and click **Publish release**.
+1. Create and push a tag, for example `git tag v0.1.1 && git push origin v0.1.1`. Any new `v*` tag can be published: the workflow passes the tag without its `v` to `scripts/package.sh` as `VERSION`, which overrides `MARKETING_VERSION` for that build, so the tag, the DMG name and the version inside the app always agree. You do not need to bump `MARKETING_VERSION` in the project first. You can also run the workflow manually from **Actions › Release › Run workflow** and enter the tag name.
+2. When the workflow finishes, find the draft on the **Releases** page, check the notes and assets, and click **Publish release**.
 
 ## Homebrew
 
-The `openwithpanel.rb` file attached to the draft already has the version and SHA-256 filled in. To let users install with Homebrew, create a separate repository named `zhaojiannet/homebrew-tap` and put the file in its `Casks/` folder. Users can then run:
+This fork publishes from `oroiteS/openwithpanel`, and the cask lives in `oroiteS/homebrew-tap`:
 
 ```sh
-brew install --cask zhaojiannet/tap/openwithpanel
+brew install --cask oroiteS/tap/openwithpanel
 ```
 
-For each new release, replace the file in the tap repository with the new `openwithpanel.rb`.
+`script/sync.sh` in that tap reads the latest release every 30 minutes and bumps `version` and `sha256` on its own, so a new release needs no manual step there. It expects the asset name `OpenWithPanel-<version>.dmg` and the single `sha256` line, both of which this project produces. The `openwithpanel.rb` attached to the draft can still be copied in by hand if a bump is needed immediately.
 
-Don't publish unnotarized releases through Homebrew. Apps installed with Homebrew are blocked by macOS just the same, and Homebrew no longer offers a way to skip that check, so users would end up with an app that installs but won't open.
+The tap's cask carries a `caveats` block with the `xattr -dr com.apple.quarantine` command, because releases from this fork are ad-hoc signed and not notarized: Homebrew installs them fine but macOS blocks the first launch. The same caveat applies to users who download the DMG directly, so keep the **First launch** section in the README as long as releases stay unnotarized.

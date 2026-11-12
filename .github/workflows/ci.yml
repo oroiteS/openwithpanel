@@ -7,9 +7,17 @@ on:
 
 jobs:
   build:
-    runs-on: xcode-27
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v7
+
+      # 工程要求 Xcode 27；镜像里默认的 Xcode 不一定是最新的那个
+      - name: Select newest Xcode
+        run: |
+          latest=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          echo "using $latest"
+          sudo xcode-select -s "$latest"
+          xcodebuild -version
 
       - name: Lint
         run: swift format lint --strict --recursive OpenWithPanelKit Apps

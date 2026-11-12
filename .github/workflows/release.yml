@@ -14,7 +14,9 @@ permissions:
 
 jobs:
   release:
-    runs-on: xcode-27
+    # 托管 runner；工程要求 Xcode 27，所以下面先选一遍最新 Xcode。
+    # 若托管镜像还没装上 Xcode 27，改成自托管标签或等 macos-27 镜像上架
+    runs-on: macos-latest
     # 签名证书和公证密钥只放在 release 环境里：环境限定只有 v* 标签能用，并可要求维护者批准，
     # 别的分支就算手动触发也拿不到
     environment: release
@@ -24,6 +26,14 @@ jobs:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
+
+      # 镜像里通常装了好几个 Xcode，默认的可能不是最新的
+      - name: Select newest Xcode
+        run: |
+          latest=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          echo "using $latest"
+          sudo xcode-select -s "$latest"
+          xcodebuild -version
 
       # 手动触发时标签是人填的，只接受 v1.2.3 这样的格式
       - name: Check tag format
@@ -92,11 +102,18 @@ jobs:
         env:
           DEVELOPER_ID: ${{ secrets.DEVELOPER_ID }}
           NOTARY_PROFILE: ${{ steps.signing.outputs.signed == 'true' && 'openwithpanel-notary' || '' }}
-        run: scripts/package.sh
+        # 版本号由 tag 决定：tag 打什么，包就是什么版本，不用先改工程的 MARKETING_VERSION
+        run: VERSION="${TAG#v}" scripts/package.sh
 
-      # 工程里的 MARKETING_VERSION 必须和标签一致，否则下载页和 App 里的版本号对不上
-      - name: Check version matches tag
-        run: test -f ".build/dist/OpenWithPanel-${TAG#v}.dmg"
+      # 兜底校验：确认 VERSION 覆盖生效（包名应当等于 tag）。任意新的 v* tag 都能直接发布
+      - name: Check DMG name matches tag
+        run: |
+          dmg=".build/dist/OpenWithPanel-${TAG#v}.dmg"
+          if [[ ! -f $dmg ]]; then
+            echo "::error::没有 $(basename "$dmg")，VERSION 覆盖未生效"
+            ls -l .build/dist || true
+            exit 1
+          fi
 
       # 建成草稿：维护者在网页上看过才发布，出错的包不会直接到用户手里
       - name: Create draft release
