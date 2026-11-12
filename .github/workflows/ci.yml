@@ -7,7 +7,9 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    # 用 xcode-27 托管镜像；macos-latest 是 macOS 26 + Xcode 26（Swift 6.3.3），
+    # 编译不了 tools-version 6.4 的 OpenWithPanelKit
+    runs-on: xcode-27
     steps:
       - uses: actions/checkout@v7
 

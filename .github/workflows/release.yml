@@ -14,9 +14,10 @@ permissions:
 
 jobs:
   release:
-    # 托管 runner；工程要求 Xcode 27，所以下面先选一遍最新 Xcode。
-    # 若托管镜像还没装上 Xcode 27，改成自托管标签或等 macos-27 镜像上架
-    runs-on: macos-latest
+    # xcode-27 是 GitHub 的托管镜像（Xcode 27 预览版），不是自托管 runner。
+    # 不能用 macos-latest：那是 macOS 26 镜像，只带 Xcode 26 / Swift 6.3.3，
+    # 而 OpenWithPanelKit 的 tools-version 是 6.4
+    runs-on: xcode-27
     # 签名证书和公证密钥只放在 release 环境里：环境限定只有 v* 标签能用，并可要求维护者批准，
     # 别的分支就算手动触发也拿不到
     environment: release
